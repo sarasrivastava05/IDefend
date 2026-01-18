@@ -161,7 +161,7 @@ Be supportive, practical, and empowering in your responses. Keep responses conci
   },
 };
 
-const GEMINI_API_KEY = 'AIzaSyDC_OjcSUHeimJ46OeF_Q4S0VfJgCTQACI';
+const GEMINI_API_KEY = 'AIzaSyBibIUuVHmqYxb2sfFTY7cUEW071MdjDPA';
 
 export default function ChatbotScreen() {
   const router = useRouter();
@@ -216,7 +216,7 @@ export default function ChatbotScreen() {
       console.log('Sending request to Gemini:', JSON.stringify(requestBody, null, 2));
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
         {
           method: 'POST',
           headers: {

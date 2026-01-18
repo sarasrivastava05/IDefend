@@ -26,11 +26,8 @@ In the output, you'll find options to open the app in a
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
 ## IMPORTANT FOR JUDGES
-.env file contents for judging:
-EXPO_PUBLIC_SUPABASE_URL=https://wjqqsnbtricerqujgfll.supabase.co
-EXPO_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqcXFzbmJ0cmljZXJxdWpnZmxsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg2MTUyNzQsImV4cCI6MjA4NDE5MTI3NH0.o9pYqnC5zAIWlSSwO186wKwfDDfoOyxMXPrSlgCxuoE
-EXPO_PUBLIC_GEMINI_API_KEY=AIzaSyC2M3UCk4enyHtsXt-EREJzVFyRDviKOmw
-EXPO_PUBLIC_NEWS_API_KEY=1e84febf65f14e7e86a22093de81f408
+env file content *NECESSARY*
+https://docs.google.com/document/d/19O2indq08BJ_ppzwJsbQvlRr6w3s-Y9MsRZIYGUJ9Pk/edit?usp=sharing 
 
 ## Get a fresh project
 

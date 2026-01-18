@@ -1,98 +1,201 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
+import Svg, { Path } from 'react-native-svg';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+const { width, height } = Dimensions.get('window');
+
+// Custom Balance Scale Icon Component from your SVG
+function BalanceScaleIcon({ size = 100, color = '#4d341e' }) {
+  return (
+    <Svg 
+      width={size} 
+      height={size} 
+      viewBox="0 0 24 24" 
+      fill="none"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <Path d="M12 3v18" />
+      <Path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+      <Path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+      <Path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+      <Path d="M7 21h10" />
+    </Svg>
+  );
+}
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const router = useRouter();
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  return (
+    <LinearGradient
+      colors={['#805734', '#a67c52', '#805734']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.container}
+    >
+      <View style={styles.content}>
+        {/* Logo/Title Section */}
+        <View style={styles.logoContainer}>
+          <Text style={styles.title}>IDefend</Text>
+          
+          {/* Balance Scale Icon */}
+          <View style={styles.scaleContainer}>
+            <BalanceScaleIcon size={120} color="#4d341e" />
+          </View>
+        </View>
+
+        {/* Buttons Section */}
+        <View style={styles.buttonContainer}>
+          {/* Sign In Button */}
+          <TouchableOpacity
+            style={styles.signInButton}
+            onPress={() => router.push('/signin')}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.signInText}>Sign In</Text>
+          </TouchableOpacity>
+
+          {/* Sign Up Text */}
+          <View style={styles.signUpContainer}>
+            <Text style={styles.signUpPrompt}>Don't have an account? </Text>
+            <TouchableOpacity
+              onPress={() => router.push('/signup')}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.signUpLink}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+
+      {/* Decorative Bubbles */}
+      <View style={styles.bubble1} />
+      <View style={styles.bubble2} />
+      <View style={styles.bubble3} />
+      <View style={styles.bubble4} />
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
+    paddingHorizontal: 40,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: height * 0.15,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  title: {
+    fontSize: 68,
+    fontWeight: '900',
+    color: '#FFF8DC',
+    textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 0, height: 4 },
+    textShadowRadius: 8,
+    letterSpacing: 3,
+  },
+  scaleContainer: {
+    marginTop: 30,
+    backgroundColor: 'rgba(255, 248, 220, 0.3)',
+    borderRadius: 70,
+    padding: 25,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 8,
+  },
+  buttonContainer: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  signInButton: {
+    backgroundColor: '#a67c52',
+    paddingVertical: 20,
+    paddingHorizontal: 70,
+    borderRadius: 50,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 8,
+    minWidth: 220,
+    alignItems: 'center',
+  },
+  signInText: {
+    fontSize: 26,
+    fontWeight: '800',
+    color: '#FFF8DC',
+    letterSpacing: 1.5,
+  },
+  signUpContainer: {
+    flexDirection: 'row',
+    marginTop: 28,
+    alignItems: 'center',
+  },
+  signUpPrompt: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: '#FFF8DC',
+  },
+  signUpLink: {
+    fontSize: 17,
+    fontWeight: '800',
+    color: '#FFD700',
+    textDecorationLine: 'underline',
+  },
+  bubble1: {
     position: 'absolute',
+    top: 80,
+    left: 30,
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    backgroundColor: 'rgba(255, 165, 0, 0.25)',
+  },
+  bubble2: {
+    position: 'absolute',
+    bottom: 120,
+    right: 35,
+    width: 130,
+    height: 130,
+    borderRadius: 65,
+    backgroundColor: 'rgba(255, 140, 0, 0.18)',
+  },
+  bubble3: {
+    position: 'absolute',
+    top: '42%',
+    right: 15,
+    width: 65,
+    height: 65,
+    borderRadius: 32.5,
+    backgroundColor: 'rgba(210, 105, 30, 0.28)',
+  },
+  bubble4: {
+    position: 'absolute',
+    bottom: '35%',
+    left: 25,
+    width: 55,
+    height: 55,
+    borderRadius: 27.5,
+    backgroundColor: 'rgba(255, 160, 122, 0.22)',
   },
 });

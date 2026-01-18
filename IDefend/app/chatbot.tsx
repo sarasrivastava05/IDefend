@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Constants from 'expo-constants';
 import {
   View,
   Text,
@@ -161,7 +162,8 @@ Be supportive, practical, and empowering in your responses. Keep responses conci
   },
 };
 
-const GEMINI_API_KEY = 'AIzaSyBibIUuVHmqYxb2sfFTY7cUEW071MdjDPA';
+const GEMINI_API_KEY = Constants.expoConfig?.extra?.EXPO_PUBLIC_GEMINI_API_KEY;
+console.log('API Key loaded:', GEMINI_API_KEY);
 
 export default function ChatbotScreen() {
   const router = useRouter();

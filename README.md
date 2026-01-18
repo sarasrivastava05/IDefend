@@ -1,5 +1,9 @@
 # IDefend
 
+## IMPORTANT FOR JUDGES
+env file content *NECESSARY*
+https://docs.google.com/document/d/19O2indq08BJ_ppzwJsbQvlRr6w3s-Y9MsRZIYGUJ9Pk/edit?usp=sharing 
+
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started
@@ -24,10 +28,6 @@ In the output, you'll find options to open the app in a
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## IMPORTANT FOR JUDGES
-env file content *NECESSARY*
-https://docs.google.com/document/d/19O2indq08BJ_ppzwJsbQvlRr6w3s-Y9MsRZIYGUJ9Pk/edit?usp=sharing 
 
 ## Get a fresh project
 

@@ -236,7 +236,7 @@ export default function ChatbotScreen() {
         throw new Error(data.error?.message || 'API request failed');
       }
 
-      // Extract text from Gemini response
+      //gemini error
       const assistantContent = 
         data.candidates?.[0]?.content?.parts?.[0]?.text || 
         'I apologize, but I encountered an error. Please try again.';
@@ -262,7 +262,7 @@ export default function ChatbotScreen() {
   };
 
   useEffect(() => {
-    // Scroll to bottom when new messages arrive
+    //scroll to bottom when new messages arrive
     setTimeout(() => {
       scrollViewRef.current?.scrollToEnd({ animated: true });
     }, 100);
@@ -295,7 +295,7 @@ export default function ChatbotScreen() {
       <KeyboardAvoidingView
         style={styles.chatContainer}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
       >
         <ScrollView
           ref={scrollViewRef}

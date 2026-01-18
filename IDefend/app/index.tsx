@@ -78,12 +78,6 @@ export default function HomeScreen() {
           </View>
         </View>
       </View>
-
-      {/* Decorative Bubbles */}
-      <View style={styles.bubble1} />
-      <View style={styles.bubble2} />
-      <View style={styles.bubble3} />
-      <View style={styles.bubble4} />
     </LinearGradient>
   );
 }
@@ -114,7 +108,7 @@ const styles = StyleSheet.create({
   },
   scaleContainer: {
     marginTop: 30,
-    backgroundColor: 'rgba(255, 248, 220, 0.3)',
+    backgroundColor: 'rgba(139, 90, 43, 0.4)',
     borderRadius: 70,
     padding: 25,
     shadowColor: '#000',
@@ -159,43 +153,7 @@ const styles = StyleSheet.create({
   signUpLink: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#FFD700',
+    color: '#DEB887',
     textDecorationLine: 'underline',
-  },
-  bubble1: {
-    position: 'absolute',
-    top: 80,
-    left: 30,
-    width: 90,
-    height: 90,
-    borderRadius: 45,
-    backgroundColor: 'rgba(255, 165, 0, 0.25)',
-  },
-  bubble2: {
-    position: 'absolute',
-    bottom: 120,
-    right: 35,
-    width: 130,
-    height: 130,
-    borderRadius: 65,
-    backgroundColor: 'rgba(255, 140, 0, 0.18)',
-  },
-  bubble3: {
-    position: 'absolute',
-    top: '42%',
-    right: 15,
-    width: 65,
-    height: 65,
-    borderRadius: 32.5,
-    backgroundColor: 'rgba(210, 105, 30, 0.28)',
-  },
-  bubble4: {
-    position: 'absolute',
-    bottom: '35%',
-    left: 25,
-    width: 55,
-    height: 55,
-    borderRadius: 27.5,
-    backgroundColor: 'rgba(255, 160, 122, 0.22)',
   },
 });

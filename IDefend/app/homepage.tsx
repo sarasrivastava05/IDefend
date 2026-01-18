@@ -10,6 +10,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import Svg, { Path, Circle } from 'react-native-svg';
+import ArticlesScreen from './articles';
 
 const { width, height } = Dimensions.get('window');
 
@@ -143,13 +144,8 @@ export default function Homepage() {
   const renderContent = () => {
     switch (activeTab) {
       case 'articles':
-        return (
-          <View style={styles.placeholderContainer}>
-            <ArticleIcon size={60} color="#4d341e" />
-            <Text style={styles.placeholderText}>Articles Coming Soon</Text>
-            <Text style={styles.placeholderSubtext}>Legal guides and resources</Text>
-          </View>
-        );
+        return <ArticlesScreen />
+          
       case 'profile':
         return (
           <View style={styles.placeholderContainer}>
@@ -158,7 +154,7 @@ export default function Homepage() {
             <Text style={styles.placeholderSubtext}>Manage your account</Text>
             <TouchableOpacity 
               style={styles.signOutButton}
-              onPress={() => router.replace('/(tabs)')}
+              onPress={() => router.replace('/')}
             >
               <Text style={styles.signOutText}>Sign Out</Text>
             </TouchableOpacity>

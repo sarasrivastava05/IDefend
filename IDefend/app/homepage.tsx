@@ -132,7 +132,7 @@ export default function Homepage() {
   const [activeTab, setActiveTab] = useState<TabType>('home');
   
   //get the actual user later
-  const userName = 'Sara and Sharon';
+  const userName = 'Sharon';
 
   const handleCategoryPress = (categoryId: string) => {
     router.push({
@@ -265,9 +265,7 @@ export default function Homepage() {
         </View>
       </View>
 
-      {/* Decorative Bubbles */}
-      <View style={styles.bubble1} pointerEvents="none" />
-      <View style={styles.bubble2} pointerEvents="none" />
+    
     </LinearGradient>
   );
 }

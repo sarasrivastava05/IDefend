@@ -19,7 +19,7 @@ export default function SignInScreen() {
 
   const handleSignIn = () => {
     // Add your auth logic here
-    console.log('Signing in with:', email, password);
+    router.replace('/homepage');
     // After successful sign in, navigate to main app
     // router.replace('/home');
   };

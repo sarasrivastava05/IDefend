@@ -11,8 +11,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import Svg, { Path, Circle } from 'react-native-svg';
 import ArticlesScreen from './articles';
-
-const { width, height } = Dimensions.get('window');
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect } from 'react';
 
 // Icon Components
 function HomeIcon({ size = 24, color = '#FFF8DC', filled = false }) {
@@ -127,12 +127,41 @@ const categories = [
 
 type TabType = 'articles' | 'home' | 'profile';
 
+interface UserData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  state: string;
+  language: string;
+}
+
 export default function Homepage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabType>('home');
-  
-  //get the actual user later
-  const userName = 'Sharon';
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    loadUserData();
+  }, []);
+
+  const loadUserData = async () => {
+    try {
+      const userDataString = await AsyncStorage.getItem('userData');
+      if (userDataString) {
+        const data: UserData = JSON.parse(userDataString);
+        setUserData(data);
+      } else {
+        // No user data found, redirect to sign in
+        router.replace('/signin');
+      }
+    } catch (error) {
+      console.error('Error loading user data:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
 
   const handleCategoryPress = (categoryId: string) => {
     router.push({
@@ -170,7 +199,7 @@ export default function Homepage() {
             {/* Welcome Section */}
             <View style={styles.welcomeSection}>
               <Text style={styles.welcomeText}>Welcome back,</Text>
-              <Text style={styles.userName}>{userName}</Text>
+              <Text style={styles.userName}>{userData?.firstName}</Text>
               <Text style={styles.subtitle}>What do you need help with today?</Text>
             </View>
 
